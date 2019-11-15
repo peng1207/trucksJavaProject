@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    					http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    				    http://www.springframework.org/schema/tx
+          			    http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+    					http://www.springframework.org/schema/context
+    					http://www.springframework.org/schema/context/spring-context.xsd
+    					http://www.springframework.org/schema/mvc
+    					http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<context:component-scan base-package="com.hsp.controller">
+		<!--context:exclude-filter type = "annotation" expression = "org.springframework.stereotype.Service"/-->
+    </context:component-scan>
+    <context:component-scan base-package="com.hsp.sql"/>
+     <context:component-scan base-package="com.hsp.service"/>
+    <mvc:annotation-driven/>	
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="InternalResourceViewResolver">
+        <!--前缀-->
+        <!--property name="prefix" value="/WEB-INF/jsp/"/-->
+        <!--后缀-->
+        <!--property name="suffix" value=".jsp"/-->
+    </bean>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+			<property name="username" value="${jdbc.user}"></property>
+			<property name="password" value="${jdbc.password}"></property>
+			<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+			<property name="driverClassName" value="${jdbc.driverClass}"></property>
+			<!--property name="initialPoolSize" value="${jdbc.initialPoolSize}"></property-->
+			<!--property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property-->
+	</bean>
+
+</beans>
