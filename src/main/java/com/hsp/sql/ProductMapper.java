@@ -13,4 +13,8 @@ public interface ProductMapper {
 			@Result(property = "id",column = "id")
 	})
 	List<Product> getAll();
+	
+	@Select("Select title,price,id from product where id =#{id}")
+	Product findById(@Param(value = "id") String id);
+	
 }

@@ -20,6 +20,9 @@ public class ProductServiceImpl implements ProductService {
 		System.out.println(productMapper);
 		return productMapper.getAll();
 	}
-
+	public Product findById(String id) {
+		// TODO Auto-generated method stub
+		return productMapper.findById(id);
+	}
 	
 }
