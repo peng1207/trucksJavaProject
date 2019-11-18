@@ -30,7 +30,7 @@ public class LoginController {
 		user.age = 20; 
 		user.address = "广东省深圳市南山区西丽";
 		map.put("data", user);
-		System.out.println(JSON.toJSONString(productService.findById("02c17dd1640a2692e4beded250b9152d")));
+//		System.out.println(JSON.toJSONString(productService.findById("02c17dd1640a2692e4beded250b9152d")));
 		
 		return map;
 	}

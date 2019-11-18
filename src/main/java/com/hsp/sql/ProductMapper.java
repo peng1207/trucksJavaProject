@@ -4,7 +4,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
-
 import com.hsp.model.Product;
 @Component
 public interface ProductMapper {
@@ -16,5 +15,6 @@ public interface ProductMapper {
 	
 	@Select("Select title,price,id from product where id =#{id}")
 	Product findById(@Param(value = "id") String id);
+	
 	
 }
