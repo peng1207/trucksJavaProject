@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.hsp.sql")
 public class TrucksApplication {
 	public static void main(String[] args) {
+		System.out.println("启动服务了");
 		SpringApplication.run(TrucksApplication.class, args);
 	}
 }
