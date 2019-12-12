@@ -17,12 +17,12 @@ public class TestController {
 		// 保费
 		double yearMoney = 30000; 
 		// 存放多少年
-		int year = 15;
+		int year = 30;
 		// 交几年的保费
 		int crossYear = 3;
 		// 利率
-		double rate = 0.04;
-//		bunan(yearMoney, year, rate,crossYear);
+		double rate = 0.045;
+		bunan(yearMoney, year, rate,crossYear);
 //		nan(yearMoney, year, rate,crossYear);
 //		fuli(yearMoney, year, rate, 12,crossYear);
 //		daikuan(12000, 0.04, 12);
@@ -46,12 +46,27 @@ public class TestController {
 	public static void bunan(double yearMoney , int year,double rate,int crossYear ) {
 		// 最终获取到的金额
 		double totalMoney = 0;
-	 
+		double totalNaMoney = 0;
+		boolean isNan = false;
 		for (int i = 1; i <= year; i++) {
 			if (i <= crossYear) {
 				totalMoney += yearMoney;
 			}
 			System.out.println("第" + i + "年头的本金为:" + totalMoney);
+			if (isNan) {
+				double naMoney = 0;
+				if (i >= 18 && i <= 21) {
+					naMoney = 75000;
+				}else if (i == 30) {
+					naMoney = 300000;
+				}else if (i >= 65 && i <= 90) {
+					naMoney = 45000;
+				}
+				totalMoney = totalMoney - naMoney;
+				totalNaMoney = totalNaMoney + naMoney;
+				System.out.println("第" + i + "年头拿的金额为:" + naMoney + " 剩余本金为:" + totalMoney);
+				
+			}
 			double interest = totalMoney * rate; 
 			totalMoney = interest + totalMoney;
 			System.out.println("第" + i + "年的利息为:" + interest);
@@ -60,7 +75,7 @@ public class TestController {
 		}
 		System.out.println(year + "年后拿到的金额为:" + totalMoney);
 		System.out.println(year + "年后拿到的利息为:" + (totalMoney - yearMoney * crossYear));
-		
+		System.out.println("总共获取到的金额" + (totalNaMoney + (totalNaMoney > 0 ? 76000 : 0) ));
 	}
 	/**
 	 * 计算第几年开始拿的金额
@@ -216,10 +231,14 @@ public class TestController {
  *  规格明细表: id 名称 规格ID 编号
  *  品牌表: id 名称
  *  单位表: id 名称
+ *  分类表: id 名称 别名 图片 父类ID
  *  
- *  商品sku
+ *  货号:7位
+ *  skuID:5位
+ *  时间戳:10位
  *   
- *  每件商品的身份ID(numberID) 货号+sku+时间戳(到秒)
+ *   
+ *  每件商品的身份ID(numberID) 货号+skuid+时间戳(到秒)
  *  用户表:
  *  商品表:id 标题 货号 创建时间 更新时间 创建ID 更新ID  商品规格 品牌ID 单位 产地 状态
  *  商品明细表:id 商品ID skuid 数量 价格 图片

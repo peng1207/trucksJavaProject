@@ -61,7 +61,7 @@ public class LoginController {
 			System.out.println(JSON.toJSONString(productService.findById("02c17dd1640a2692e4beded250b9152d")));
 			System.out.println(productService.updateData(user1));
 			System.out.println(productService.insertData("张三", "1"));
-		   
+		  
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
